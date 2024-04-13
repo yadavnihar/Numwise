@@ -39,14 +39,15 @@
 
             <div class="form-group">
                 <!-- <label for="Textbox">Enter Numbers Below</label> -->
-                <h2 class="my-4">Enter Numbers Below</h2>
-                <textarea class="form-control" autofocus placeholder="Enter Numbers Here" oninput='onChangefun()'  id="Textbox" rows="10"></textarea>
+                <h2 class="my-2">Enter Numbers Below</h2>
+                <textarea class="form-control" autofocus placeholder="Enter Numbers Here" oninput='onChangefun()'  id="Textbox" rows="8"></textarea>
             </div>
         </form>
-        <p class="pb-3 mb-0 war lh-sm mx-2 dis-none" id="pra">
+        <p class=" mb-0 war lh-sm mx-2 dis-none" id="pra">
           
           To ensure accurate results, please input only numbers separated by single commas.
         </p>
+        <p id="message" > </p>
         <div class="btn btn-primary my-2 mx-1">Ascending order</div>
         <div class="btn btn-primary my-2 mx-1">Descending order</div>
         <!-- <div class="btn btn-primary my-2 mx-1 max" id = "max">Maximum/Minimum</div> -->
@@ -63,16 +64,16 @@
     <div class="container sec-container">
       <h2 >About Data</h2>
       <!-- <h3 id="sumdata"></h3> -->
-      <p id="aboutdata">------</p>
-      <!-- <p id="avgdata"> </p> -->
+      <h4 id="aboutdata">------</h4>
+      <h4 id="compare"> </h4>
     </div>
 
 
 
-      <footer class="d-flex flex-wrap py-3  justify-content-center  footer border-top">
-          <span class="mb-3 mb-md-0 justify-content-center">© Developed by<a href="https://www.linkedin.com/in/yadavnihar"> Lokesh Yadav</a> </span>
+    <footer class="d-flex flex-wrap  justify-content-center  footer border-top">
+      <span class="mb-3 mb-md-0 justify-content-center">© Developed by<a href="https://www.linkedin.com/in/yadavnihar"> Lokesh Yadav</a> </span>
 
-      </footer>
+  </footer>
     <!-- </div> -->
 
 
@@ -96,6 +97,7 @@ var Textbox = document.getElementById("Textbox");
 var pra = document.getElementById("pra");
 // let max = document.getElementById("max")
 var abtData = document.getElementById("aboutdata")
+var compare = document.getElementById("compare")
 
 Textbox.addEventListener("input", function() {
   var text = Textbox.value;
@@ -129,14 +131,32 @@ function onChangefun(){
             }
             let changeavg = (sum / l).toFixed(2)
 
+            
+            let max = Number.NEGATIVE_INFINITY
+            let min = Number.POSITIVE_INFINITY
+            for(let i =0; i<=values.length -1 ; i++){
+              if(values[i] > max){
+                max = values[i]
+              }
+              if(min >values[i]){
+                min = values[i]
+              }
+            }
+            // console.log(max)
+
            
         abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span>";
-           
+        // abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span><span class='text'>Max:- </span><span class='variable'>" + max + "</span> ";
+           compare.innerHTML = "<span class='text'>Max:- </span><span class='variable'>" + max + "</span> <span class='text'>Min:- </span><span class='variable'>" + min + "</span>"
       
                  
                   
 
-                
+             if(Textbox.value == ""){
+              compare.innerHTML  = ""
+              abtData.innerHTML = ""
+             }   
+             
 
 }
 
@@ -179,18 +199,12 @@ function onChangefun(){
                 if(Textbox.value.split(",")){
                   q = Textbox.value.split(",")
                 }
-
-                // else(Textbox.value.split(" "))
-                // {
-                //   q = Textbox.value.split(" ")
-                // }
-               
-                
                 function compare(x,y) {
                   return x - y
                 }
                 let p = q.sort(compare)
                 Textbox.value = p
+               
           };
 
           //  ******** Descending ********
@@ -311,7 +325,8 @@ function onChangefun(){
   clear.onclick = function(){
     Textbox.value = ""
     abtData.style.color = " #333333"
-    abtData.innerHTML = "Enter Numbers"
+    abtData.innerHTML = "Enter Numbers "
+    compare.innerHTML = ""
   }
     </script>
    
@@ -321,4 +336,3 @@ function onChangefun(){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>
-  

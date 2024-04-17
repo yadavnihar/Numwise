@@ -116,48 +116,27 @@ Textbox.addEventListener("input", function() {
 
 
 
+
 function onChangefun(){
+    // Replace spaces with commas in the input value
+    let formattedInput = Textbox.value.replace(/\s+/g, ',');
+    
+    // Split the formatted input by commas and filter out non-numeric values
+    let values = formattedInput.split(",").map(Number).filter(num => !isNaN(num)); 
 
+    let l = values.length;
 
-  let l = Textbox.value.split(",").filter(Number).length; 
+    let sum = 0;
+    for (let i = 0; i < l; i++) {
+        sum += values[i];
+    }
+    let changeavg = (sum / l).toFixed(2);
 
+    let max = Math.max(...values);
+    let min = Math.min(...values);
 
-                let values = Textbox.value.split(",").map(Number).filter(num => !isNaN(num)); 
-
-            let sum = 0;
-
-            for (let i = 0; i < values.length; i++) {
-                sum += values[i];
-            }
-            let changeavg = (sum / l).toFixed(2)
-
-            
-            let max = Number.NEGATIVE_INFINITY
-            let min = Number.POSITIVE_INFINITY
-            for(let i =0; i<=values.length -1 ; i++){
-              if(values[i] > max){
-                max = values[i]
-              }
-              if(min >values[i]){
-                min = values[i]
-              }
-            }
-            // console.log(max)
-
-           
-        abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span>";
-        // abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span><span class='text'>Max:- </span><span class='variable'>" + max + "</span> ";
-           compare.innerHTML = "<span class='text'>Max:- </span><span class='variable'>" + max + "</span> <span class='text'>Min:- </span><span class='variable'>" + min + "</span>"
-      
-                 
-                  
-
-             if(Textbox.value == ""){
-              compare.innerHTML  = ""
-              abtData.innerHTML = ""
-             }   
-             
-
+    abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span>";
+    compare.innerHTML = "<span class='text'>Max:- </span><span class='variable'>" + max + "</span> <span class='text'>Min:- </span><span class='variable'>" + min + "</span>";
 }
 
 

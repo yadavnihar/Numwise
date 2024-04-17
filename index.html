@@ -50,11 +50,7 @@
         <p id="message" > </p>
         <div class="btn btn-primary my-2 mx-1">Ascending order</div>
         <div class="btn btn-primary my-2 mx-1">Descending order</div>
-        <!-- <div class="btn btn-primary my-2 mx-1 max" id = "max">Maximum/Minimum</div> -->
-        <!-- <div class="btn btn-primary my-2 mx-1 sum">Sum</div> -->
-        <!-- <div class="btn btn-primary my-2 mx-1 length">Length</div> -->
         <div class="btn btn-primary my-2 mx-1 duplicat">Remove duplicates</div>
-        <!-- <div class="btn btn-primary my-2 mx-1 average">Average</div> -->
         <div class="btn btn-primary my-2 mx-1 average copy" id="copy">Copy</div>
         <div class="btn btn-primary my-2 mx-1 clear">Clear All</div>
 
@@ -63,7 +59,6 @@
     </div>
     <div class="container sec-container">
       <h2 >About Data</h2>
-      <!-- <h3 id="sumdata"></h3> -->
       <h4 id="aboutdata">------</h4>
       <h4 id="compare"> </h4>
     </div>
@@ -74,7 +69,7 @@
       <span class="mb-3 mb-md-0 justify-content-center">© Developed by<a href="https://www.linkedin.com/in/yadavnihar"> Lokesh Yadav</a> </span>
 
   </footer>
-    <!-- </div> -->
+ 
 
 
 
@@ -86,16 +81,11 @@
        
 let Ascending = document.getElementsByClassName("btn")[0];
 let Descending = document.getElementsByClassName("btn")[1];
-let length = document.getElementsByClassName("length")[0]
-let sum = document.getElementsByClassName("sum")[0]
-let average = document.getElementsByClassName("average")[0]
 let duplicat = document.getElementsByClassName("duplicat")[0]
-// let orginal = document.getElementsByClassName("orginal")[0]
-let clear = document.getElementsByClassName("clear")[0]
-// let war = document.getElementsByClassName("war")[0]
-var Textbox = document.getElementById("Textbox");
 var pra = document.getElementById("pra");
-// let max = document.getElementById("max")
+let clear = document.getElementsByClassName("clear")[0]
+
+var Textbox = document.getElementById("Textbox");
 var abtData = document.getElementById("aboutdata")
 var compare = document.getElementById("compare")
 
@@ -115,53 +105,88 @@ Textbox.addEventListener("input", function() {
 });
 
 
+// var Textbox = document.getElementById("Textbox");
+// var abtData = document.getElementById("aboutdata")
+// var compare = document.getElementById("compare")
+
+// function onChangefun(){
+
+
+//   let l = Textbox.value.split(",").filter(Number).length; 
+
+
+//                 let values = Textbox.value.split(",").map(Number).filter(num => !isNaN(num)); 
+
+//             let sum = 0;
+
+//             for (let i = 0; i < values.length; i++) {
+//                 sum += values[i];
+//             }
+//             let changeavg = (sum / l).toFixed(2)
+
+            
+//             let max = Number.NEGATIVE_INFINITY
+//             let min = Number.POSITIVE_INFINITY
+//             for(let i =0; i<=values.length -1 ; i++){
+//               if(values[i] > max){
+//                 max = values[i]
+//               }
+//               if(min >values[i]){
+//                 min = values[i]
+//               }
+//             }
+            
+
+           
+//         abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span>";
+//         compare.innerHTML = "<span class='text'>Max:- </span><span class='variable'>" + max + "</span> <span class='text'>Min:- </span><span class='variable'>" + min + "</span>"
+      
+                 
+                  
+
+//              if(Textbox.value == ""){
+//               compare.innerHTML  = ""
+//               abtData.innerHTML = ""
+//              }   
+             
+
+// }
+// alert("asdfa s")
 
 
 function onChangefun(){
-    // Replace spaces with commas in the input value
-    let formattedInput = Textbox.value.replace(/\s+/g, ',');
+
+  let formated = Textbox.value.replace(/\s+/g, ',')
     
-    // Split the formatted input by commas and filter out non-numeric values
-    let values = formattedInput.split(",").map(Number).filter(num => !isNaN(num)); 
+    let k = formated.split(",").filter(Number);
 
-    let l = values.length;
 
-    let sum = 0;
-    for (let i = 0; i < l; i++) {
-        sum += values[i];
-    }
-    let changeavg = (sum / l).toFixed(2);
+
+    let values = formated.split(",").map(Number).filter(num => !isNaN(num)); 
+        let sum = 0;
+        for (let i = 0; i < values.length; i++) {
+            sum += values[i];
+        }
+        let changeavg = (sum / k.length).toFixed(2)
+
+
+
+        
+
+
+       
 
     let max = Math.max(...values);
     let min = Math.min(...values);
 
-    abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span>";
+    abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + k.length + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span>";
     compare.innerHTML = "<span class='text'>Max:- </span><span class='variable'>" + max + "</span> <span class='text'>Min:- </span><span class='variable'>" + min + "</span>";
 }
 
 
 
 
-  // ******** Max/Min********
 
-  // max.onclick = function() {
-            
-  //           let arr = Textbox.value.split(",")
-  //           let max = Number.NEGATIVE_INFINITY;
-  //     for(let i =0; i<=arr.length; i++){
-  //       if (arr[i]> max){
-  //         max = arr[i]
-  //       }
-  //     }
-  //     min = Number.POSITIVE_INFINITY;
-  //     for(let l =0; l<=arr.length; l++){
-  //       if (arr[l] < min){
-  //         min = arr[l]
-  //       }
-  //     }
-  //     alert("Max: " + max + "  Min: " + min)
-
-  //   };
 
 
 
@@ -172,7 +197,7 @@ function onChangefun(){
 
 
           //  ******** Ascending ********
-           Ascending.onclick = function() {
+            Ascending.onclick = function() {
               let formated = Textbox.value.replace(/\s+/g, ',')
     
                let k = formated.split(",").filter(Number);
@@ -188,7 +213,7 @@ function onChangefun(){
           };
 
           //  ******** Descending ********
-        Descending.onclick = function() {
+          Descending.onclick = function() {
             let formated = Textbox.value.replace(/\s+/g, ',')
     
     let k = formated.split(",").filter(Number);
@@ -238,64 +263,12 @@ function onChangefun(){
         abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span>";
          
           };
+
             // ******** Length *******
-
-         
-
-
-
-         
-
             // length.onclick = function() {
             //    let l = Textbox.value.split(",").filter(Number).length; // Filter out empty strings
             //    alert(l);
-            //   };
-
-
-
-      //   ******** SUM *******
-     
-                // sum.onclick = function() {
-                //  let dd = Textbox.value.split(',').map(Number);
-                //  let sum = 0;
-
-                //   for (let i = 0; i < dd.length; i++) {
-                //   sum += dd[i];
-                //   }
-                //   if (isNaN(sum)) {
-                //   alert("Please enter valid numbers.");
-                //   }
-                //   else {
-                //     alert("Sum: " + sum);
-                //   }
-                // };
-
-
-                // ****** Average *******
-          // var Textbox = document.getElementById("Textbox");
-          // average.onclick = function() {
-          //       let l = Textbox.value.split(",").filter(Number).length;
-          //   let dd = Textbox.value.split(',').map(Number);
-          //       let sum = 0
-          //       for (let i = 0; i < dd.length; i++) {
-             
-                    
-          //           sum += dd[i];
-		      //       var numb = (sum/l)
-          //         }
-                 
-          //     if (isNaN(sum)) {
-          //         alert("Please Enter Valid Numbers.");
-          //         }
-          //         else {
-              
-			    //           alert("Average: " + numb.toFixed(2));
-                  
-          //         }
-          //       };
-
-
-
+            //   };          
                 
 
                 // ********** COPY *********

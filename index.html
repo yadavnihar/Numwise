@@ -172,35 +172,45 @@ function onChangefun(){
 
 
           //  ******** Ascending ********
-            Ascending.onclick = function() {
+           Ascending.onclick = function() {
+              let formated = Textbox.value.replace(/\s+/g, ',')
+    
+               let k = formated.split(",").filter(Number);
             
                 let q ;
-                if(Textbox.value.split(",")){
-                  q = Textbox.value.split(",")
-                }
+               
                 function compare(x,y) {
                   return x - y
                 }
-                let p = q.sort(compare)
+                let p = k.sort(compare)
                 Textbox.value = p
                
           };
 
           //  ******** Descending ********
-          Descending.onclick = function() {
-                let d = Textbox.value.split(",")
+         Ascending.onclick = function() {
+              let formated = Textbox.value.replace(/\s+/g, ',')
+    
+               let k = formated.split(",").filter(Number);
+            
+                let q ;
+               
                 function compare(x,y) {
                   return y - x
                 }
-                let k = d.sort(compare)
-                Textbox.value = k
+                let p = k.sort(compare)
+                Textbox.value = p
+               
           };
 
 
 
           // ******** Remove Duplicate *******
           duplicat.onclick = function() {
-            let arr = Textbox.value.split(",")  
+            // let arr = Textbox.value.split(",")  
+            let formated = Textbox.value.replace(/\s+/g, ',')
+    
+    let arr = formated.split(",").filter(Number);
 
             for (let i = 0; i <= arr.length - 1; i++) {
                for (let j = i + 1; j <= arr.length - 1; j++) {
@@ -229,7 +239,6 @@ function onChangefun(){
         abtData.innerHTML = "<span class='text'>Total sum of numbers: </span><span class='variable'>" + sum + "</span><span class='text'>, Total count of numbers: </span><span class='variable'>" + l + "</span><span class='text'>, Average of numbers: </span><span class='variable'>" + changeavg + "</span>";
          
           };
-
             // ******** Length *******
 
          

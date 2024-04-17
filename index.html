@@ -188,19 +188,18 @@ function onChangefun(){
           };
 
           //  ******** Descending ********
-         Ascending.onclick = function() {
-              let formated = Textbox.value.replace(/\s+/g, ',')
+        Descending.onclick = function() {
+            let formated = Textbox.value.replace(/\s+/g, ',')
     
-               let k = formated.split(",").filter(Number);
-            
-                let q ;
-               
-                function compare(x,y) {
-                  return y - x
-                }
-                let p = k.sort(compare)
-                Textbox.value = p
-               
+    let k = formated.split(",").filter(Number);
+ 
+     let q ;
+    
+     function compare(x,y) {
+       return  y - x
+     }
+     let p = k.sort(compare)
+     Textbox.value = p
           };
 
 
